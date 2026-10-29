@@ -47,6 +47,51 @@ Presents XRec, a framework that combines collaborative signals with large langua
 - [Paper in the ACL Anthology](https://aclanthology.org/2024.findings-emnlp.22/)
 - [arXiv version](https://arxiv.org/abs/2406.02377)
 
+## Questions to try in the app
+
+Use these example prompts to check different parts of the RAG workflow. Select the named paper in the app for single-paper questions, and choose **all papers** for cross-paper synthesis. Answers can vary with retrieval results; open the source panels and verify important claims against the cited excerpts.
+
+### Single-paper retrieval
+
+**Select the RAG paper**
+- How does RAG combine parametric and non-parametric memory to answer knowledge-intensive questions?
+- What is the difference between RAG-Sequence and RAG-Token?
+- What quantitative evidence does the paper report when comparing RAG with its baselines?
+
+**Select the mechanistic interpretability review**
+- Which interpretability objects and techniques does the review discuss, and what limitations or open challenges does it identify?
+- How does mechanistic interpretability aim to understand a transformer's internal computations?
+
+**Select the XRec paper**
+- How does XRec combine collaborative signals with a large language model to produce explainable recommendations?
+- What role does the collaborative adaptor play in the XRec framework?
+
+### Cross-paper synthesis
+
+**Select all papers**
+- Compare how RAG and XRec use retrieved information or collaborative signals to condition model outputs. What is similar, and what is different?
+- How does retrieval-based grounding in the RAG paper differ from the goal of understanding internal model computations in the mechanistic interpretability review?
+- What limitations or open research questions are discussed across the three papers? Separate each paper's claims rather than assuming they reach the same conclusion.
+
+### Bibliography lookup
+
+- Find the exact bibliography entry for “Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks.”
+- What publication venue and year are listed for “XRec: Large Language Models for Explainable Recommendation”?
+
+### Figures, tables, and evidence checks
+
+- In the XRec paper, explain the framework diagram and the role of the collaborative adaptor. Use the caption and approved visual description if one is available in the index.
+- Summarize what the RAG paper's results table reports about performance compared with its baselines. Only include values supported by retrieved evidence.
+- Which retrieved passages support the main claims in your answer? Open the source panels and check whether each citation actually supports the claim.
+
+### Abstention check
+
+- According to these papers, what is the current weather in Coimbatore?
+
+This last question is intentionally outside the paper collection. A good result should state that the indexed papers do not provide that information rather than inventing an answer.
+
+These prompts are smoke tests, not a benchmark. For formal evaluation, use held-out questions with manually reviewed relevance labels and assess retrieval, answer correctness, citation support, and abstention separately.
+
 ### Paper sources and redistribution
 
 The repository links to the papers' publisher or preprint pages instead of including the original PDFs. The prebuilt deployment index can still contain extracted text and reviewed figure crops, so check each paper's license and redistribution terms before sharing those files publicly. For local ingestion, place permitted PDF copies in `data/selected_papers/`. The current `.gitignore` allows PDF files in that folder to be tracked, so do not commit them unless redistribution is permitted; check `git status --short` before pushing.
