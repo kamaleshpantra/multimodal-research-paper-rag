@@ -54,11 +54,12 @@ This paper presents XRec, a framework that combines collaborative signals with l
 
 ### Why these papers?
 
-Together, the collection provides three complementary research perspectives: **RAG methodology**, **understanding the internal computations of language models**, and **using language models for explainable recommendation**. The application can answer single-paper questions, retrieve bibliography entries, and attempt cross-paper synthesis when the indexed evidence supports it. If evidence is missing, the answer should say so rather than invent details.
+Together, these papers cover three complementary perspectives: **retrieval-augmented generation (RAG), mechanistic interpretability of language models, and explainable recommendation**. The application supports questions about individual papers, bibliography lookups, and evidence-grounded synthesis across papers. When the indexed evidence is insufficient, it is designed to acknowledge the limitation rather than invent details.
 
-**About distributing the PDFs:** this repository links to the original publisher or preprint pages instead of re-hosting the paper PDFs. Before committing the PDFs, extracted full text, or figure crops to a public repository, check the applicable license and redistribution terms. For local ingestion, place permitted PDF copies in `data/selected_papers/`; that local input folder is ignored by the recommended `.gitignore`.
+**Paper sources and licensing:** The repository links to the original publisher or preprint pages rather than redistributing the PDFs. Before publishing paper PDFs, extracted text, or figure crops, check the applicable licenses and redistribution terms. For local ingestion, place permitted PDF copies in `data/selected_papers/`; this folder should remain excluded from Git.
 
-The app builds its paper selector from the paper registry included with the deployment index. To add a paper, process it into the corpus, review any visual descriptions, rebuild the deployment index, and test retrieval and answers for the new paper.
+**Adding papers:** The paper selector is populated from the paper registry in the deployment index. To add a paper, process it into the corpus, review its visual descriptions, rebuild the deployment index, and test retrieval and answer quality.
+
 
 ## Architecture
 
