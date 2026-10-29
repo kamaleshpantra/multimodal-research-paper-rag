@@ -1,0 +1,20 @@
+{
+  "foundational_rag": {
+    "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+    "authors": [],
+    "year": null,
+    "source_metadata": "foundational_rag.grobid.json"
+  },
+  "llm_interpretability": {
+    "title": "A Practical Review of Mechanistic Interpretability for Transformer-Based Language Models",
+    "authors": [],
+    "year": null,
+    "source_metadata": "llm_interpretability.grobid.json"
+  },
+  "recommendation_xrec": {
+    "title": "XRec: Large Language Models for Explainable Recommendation",
+    "authors": [],
+    "year": null,
+    "source_metadata": "recommendation_xrec.grobid.json"
+  }
+}

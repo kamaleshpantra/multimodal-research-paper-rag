@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.1",
+  "embedding_provider": "fastembed-local-onnx",
+  "embedding_model": "BAAI/bge-base-en-v1.5",
+  "embedding_dimensions": 768,
+  "record_count": 1710,
+  "dtype": "float32",
+  "normalized_for_cosine_similarity": true,
+  "document_embedding_instruction": "none",
+  "query_embedding_instruction": "Represent this sentence for searching relevant passages: ",
+  "source_type_counts": {
+    "abstract": 5,
+    "bibliography_reference": 317,
+    "citation_context": 495,
+    "figure_caption": 46,
+    "page_text": 401,
+    "section_text": 425,
+    "table": 20,
+    "visual_description": 1
+  },
+  "paper_record_counts": {
+    "foundational_rag": 350,
+    "llm_interpretability": 1138,
+    "recommendation_xrec": 222
+  },
+  "records_file": "records.jsonl",
+  "embeddings_file": "embeddings.npy",
+  "notes": [
+    "This deployment index is separate from data/index and must be queried with the same FastEmbed model.",
+    "Only reviewed visual-description records are retained; caption-only records remain explicitly caption-only.",
+    "The text corpus and image crops are sourced from the local research-paper corpus; check redistribution rights before publishing them in a public repository."
+  ]
+}

@@ -1,0 +1,36 @@
+
+# Secrets and environment files
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Include research paper PDFs only when redistribution is permitted
+data/selected_papers/*
+!data/selected_papers/*.pdf
+
+# Local preprocessing outputs
+data/processed/
+data/images/
+data/ingestion/
+
+# Local experiment index
+data/index/
+
+# Generated evaluation outputs
+data/evaluation/runs/
+data/evaluation/deployment_runs/
+
+# Temporary and backup files
+*.bak
+*.tmp
+*.log
