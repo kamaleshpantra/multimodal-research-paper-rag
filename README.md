@@ -254,7 +254,28 @@ Keep `data/deployment_index/` available to the deployed app. After changing the 
 
 ## Evaluation and tests
 
-Run the available syntax and unit-test checks from the repository root:
+The project includes separate evaluation paths for the local retrieval experiments and the FastEmbed-based deployment index. Keep their results separate because they use different embedding configurations.
+
+### Preliminary local retrieval results
+
+A recorded development run used `src/evaluation/evaluate_rag.py` with the local `bge-m3:latest` embedding path and `top-k = 8`:
+
+| Metric | Result | What it measures |
+|---|---:|---|
+| Hit@8 | 1.0000 (100%) | At least one labeled relevant chunk appeared in the top 8 for each answerable question. |
+| Recall@8 | 0.7381 | Average fraction of labeled relevant chunks retrieved in the top 8. |
+| MRR@8 | 0.5086 | How highly the first labeled relevant chunk ranked. |
+| nDCG@8 | 0.4999 | Ranking quality with greater weight given to relevant chunks appearing earlier. |
+
+The run contained **10 seed questions**: 9 answerable questions and 1 intentionally unanswerable question. Retrieval-ranking metrics were calculated over the 9 answerable questions; the unanswerable case was excluded from those metrics.
+
+A separate generation smoke test ran on 4 answerable cases, and all 4 generation calls completed successfully. This indicates successful execution, **not** 100% answer accuracy: the generated answers and citations still require human review using the saved `manual_review.csv`.
+
+**Important:** These are preliminary local-experiment results, not measurements of the deployed Streamlit configuration. The local run used `bge-m3:latest`; the deployment app uses FastEmbed with `BAAI/bge-base-en-v1.5`. The evaluation labels were drafted from development observations and have not yet been validated as a held-out gold standard. Do not compare or report these numbers as deployment results.
+
+### Reproduce checks and run evaluation
+
+Run syntax and unit-test checks from the repository root:
 
 ```powershell
 python -m py_compile app.py src\retrieval\deployment_rag.py src\retrieval\build_deployment_index.py src\generation\answer_generator.py src\ingestion\vision_index.py src\ingestion\approve_vision_records.py src\evaluation\evaluate_deployment_index.py
@@ -262,15 +283,23 @@ python tests\test_answer_generator_citation_audit.py
 python -m unittest tests.test_deployment_rag -v
 ```
 
-To evaluate the deployment index after it has been built:
+To rerun the local retrieval experiment (uses the local retrieval path and its configured embedding model):
+
+```powershell
+python src\evaluation\evaluate_rag.py --top-k 8
+```
+
+To evaluate the actual deployment index, after it has been built:
 
 ```powershell
 python src\evaluation\evaluate_deployment_index.py --top-k 8
 ```
 
-The evaluation script writes a per-run JSON report and a Markdown summary under `data/evaluation/deployment_runs/`.
+The deployment evaluation script writes a per-run JSON report and Markdown summary under `data/evaluation/deployment_runs/`. Report those deployment-specific results separately once you have run and reviewed them.
 
-**Evaluation limitations:** the included seed set is small and its relevance labels need manual review. Add held-out questions before treating results as benchmark-quality metrics. Hit@K, Recall@K, MRR, and nDCG measure retrieval ranking; they do not establish answer correctness, citation entailment, visual-reading accuracy, or abstention quality. Inspect generated answers separately.
+### Evaluation scope and limitations
+
+Hit@K, Recall@K, MRR, and nDCG evaluate retrieval ranking against labeled relevant chunks. They do not establish answer correctness, faithfulness, citation entailment, visual-reading accuracy, or abstention quality. For a stronger evaluation, manually verify the relevance labels, add held-out questions that were not used while tuning the system, and independently score generated answers for correctness, evidence support, citation quality, relevance, and abstention.
 
 ## Limitations and privacy
 
