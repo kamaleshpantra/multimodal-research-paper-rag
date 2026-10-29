@@ -5,3 +5,4 @@ fastembed>=0.7.0,<1
 Pillow>=10,<13
 rank-bm25>=0.2.2,<0.3
 PyMuPDF>=1.24,<2
+pyarrow==24.0.0
