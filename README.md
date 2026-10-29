@@ -2,7 +2,7 @@
 
 An evidence-grounded research assistant for asking questions about three scientific papers. It retrieves relevant passages from the indexed papers, generates an answer with source markers, and lets the reader inspect the evidence behind the answer.
 
-> [**Live demo:** ](https://multimodalresearch.streamlit.app/)
+> [**Live demo** ](https://multimodalresearch.streamlit.app/)
 
 
 ## What this project does
